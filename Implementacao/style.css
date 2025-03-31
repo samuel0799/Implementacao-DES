@@ -104,6 +104,17 @@
     min-height: 50px;
   }
   
+  .output-box {
+    background-color: #3498db;
+    color: black; 
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid black;
+    font-weight: bold;
+    word-break: break-word;
+    margin-top: 15px;
+  }
+  
   .section {
     margin-bottom: 30px;
   }

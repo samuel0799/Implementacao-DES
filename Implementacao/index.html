@@ -16,17 +16,17 @@
   <label for="keyInputEncrypt">Chave (8 caracteres):</label>
   <input type="text" id="keyInputEncrypt" maxlength="8" placeholder="Insira a chave" />
   <br />
-  <button id="encryptButton">Encrypt</button>
+  <button id="encryptButton">Criptografar</button>
   <p id="encryptedOutput"></p>
 
   <h2>Descriptografar</h2>
-  <label for="encryptedInput">Texto criptografado (64 bits):</label>
+  <label for="encryptedInput">Texto criptografado (Binário 64bits):</label>
   <input type="text" id="encryptedInput" placeholder="Insira o texto criptografado" />
   <br />
   <label for="keyInputDecrypt">Chave (8 caracteres):</label>
   <input type="text" id="keyInputDecrypt" maxlength="8" placeholder="Insira a chave" />
   <br />
-  <button id="decryptButton">Decrypt</button>
+  <button id="decryptButton">Descriptografar</button>
   <p id="decryptedOutput"></p>
 
   <script src="../javascript/DES.js"></script>
@@ -77,8 +77,19 @@ function binaryToBase64(binary) {
       
       const result = des(inputBlock, key64, "encrypt");
 
-      
-      document.getElementById("encryptedOutput").textContent = "Texto Criptografado (Binario): " + result;
+      const resultBase64 = binaryToBase64(result);
+
+      document.getElementById("encryptedOutput").className = "highlight-output";
+      document.getElementById("encryptedOutput").innerHTML = `
+        <div class="output-box">
+          <strong>Texto Criptografado (Binário):</strong>
+          <p>${result}</p>
+        </div>
+        <div class="output-box">
+          <strong>Texto Criptografado (Base64):</strong>
+          <p>${resultBase64}</p>
+        </div>
+      `;
     });
 
     
